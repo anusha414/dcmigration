@@ -70,5 +70,32 @@ Multiple app hosting → Hosts multiple apps on one server with clean URLs.
 Logging & monitoring → Tracks requests, errors, and performance for debugging.
 Enterprise integration → Works with Windows authentication and Active Directory.
 
+IIS SITES:-
+IIS Sites are simply the websites or web applications configured inside IIS.
+Simple Example
+Suppose you have a Windows server running IIS. Inside IIS, you can create multiple sites:
+IIS Server
+├── Site1 → app.company.com
+├── Site2 → api.company.com
+└── Site3 → intranet.company.com
+Each of these is called an IIS Site.
+
+What does an IIS Site contain?
+An IIS Site typically has:
+Website files (HTML, ASP.NET, APIs, etc.)
+Bindings
+  Domain name
+  Port number
+  Protocol (HTTP/HTTPS)
+Application Pool association
+
+Example:
+Site Name: EmployeePortal
+Domain: employee.company.com
+Port: 443
+Protocol: HTTPS
+Physical Path: C:\Apps\EmployeePortal
+
+
 
 
