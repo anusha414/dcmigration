@@ -48,3 +48,8 @@ Updates
 Fixes
 Environment changes
 
+IIS(Internet Information servoces) Config:-
+1. It is a service installed in the server, then this service becomes web server.
+2. 
+
+
