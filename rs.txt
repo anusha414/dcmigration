@@ -1,0 +1,50 @@
+These terms are commonly used in application/cloud migration strategies (often called the “6 R’s” or “5 R’s” of modernization).
+Here’s a clear and simple explanation of each:
+
+1. Rehost (Lift and Shift)
+What it means: Move an application as-is from one environment to another (e.g., on‑premises → cloud) without changing code.
+Focus: Speed and simplicity.
+Example: Moving a VM from your data center to AWS/Azure VM.
+✅ Pros:
+Quick migration
+Low risk
+❌ Cons:
+Doesn’t use cloud-native benefits
+May not reduce costs much
+
+2. Replatform (Lift, Tinker, and Shift)
+What it means: Move the application to a new platform with minor optimizations, but no major code changes.
+Focus: Improve performance using managed services.
+Example:
+Moving from self-managed database → managed cloud DB (Azure SQL, RDS)
+Moving app to containers without redesigning logic
+✅ Pros:
+Better performance than rehost
+Some cloud benefits
+❌ Cons:
+Limited modernization
+
+3. Refactor (Re-architect)
+What it means: Redesign and rewrite parts (or all) of the application to fully use cloud-native features.
+Focus: Scalability, resilience, and innovation.
+Example:
+Monolith → microservices
+Adding serverless components (Azure Functions, Lambda)
+✅ Pros:
+Best performance and scalability
+Fully cloud-optimized
+❌ Cons:
+Time-consuming
+Higher cost and complexity
+
+4. Redeploy
+What it means: Deploy (or deploy again) an application to an environment, often as part of CI/CD pipelines or migration.
+Not strictly part of “R’s” but commonly used in DevOps.
+Example:
+Deploying a new version of your app to Kubernetes
+Redeploying after configuration changes
+✅ Use cases:
+Updates
+Fixes
+Environment changes
+
