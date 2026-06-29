@@ -48,8 +48,27 @@ Updates
 Fixes
 Environment changes
 
-IIS(Internet Information servoces) Config:-
-1. It is a service installed in the server, then this service becomes web server.
-2. 
+IIS(Internet Information services) Config:-
+1. It is a service installed in the server, then this server becomes web server.
+2. A web server is a system that stores websites and delivers web pages to users over the internet.
+3. IIS is a web server software created by Microsoft that is used to host and manage websites and web applications on Windows servers. It is similar to Apache, nginx web servers.
+4. IIS is used for both onpremise windows enviornment and also Cloud services like Azure VM and AWS EC2.
+5. Today many apps:
+Don’t use IIS at all
+Run on:
+Linux servers
+Containers (Docker/Kubernetes)
+Cloud platforms (Azure App Service, etc.)
+
+✅ IIS – One-line points
+
+HTTP/HTTPS handling → Receives browser requests and sends responses.
+Security → Provides built-in SSL, authentication, and request filtering.
+Reverse proxy & load handling → Manages incoming traffic efficiently before reaching your app.
+Process management → Auto-restarts apps and isolates them using Application Pools.
+Multiple app hosting → Hosts multiple apps on one server with clean URLs.
+Logging & monitoring → Tracks requests, errors, and performance for debugging.
+Enterprise integration → Works with Windows authentication and Active Directory.
+
 
 
