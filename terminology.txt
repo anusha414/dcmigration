@@ -1,0 +1,11 @@
+COTS SOLUTION:-
+
+COTS stands for Commercial Off-The-Shelf solution.
+A COTS solution is a ready-made software product that is developed by a vendor and sold to multiple customers, rather than being custom-built for a specific organization.
+Examples of COTS solutions
+Microsoft 365
+Salesforce CRM
+SAP ERP
+ServiceNow
+Atlassian Jira
+Workday
