@@ -48,6 +48,14 @@ Updates
 Fixes
 Environment changes
 
+5. Repurchase:-
+Replace the existing application with a different product or a SaaS version of the same product instead of migrating the current application to AWS.
+Why Repurchase?
+Eliminates infrastructure management.
+Reduces maintenance and upgrade effort.
+Vendor handles scalability, patching, and availability.
+Often aligns with cloud-first strategies.
+
 IIS(Internet Information services) Config:-
 1. It is a service installed in the server, then this server becomes web server.
 2. A web server is a system that stores websites and delivers web pages to users over the internet.
