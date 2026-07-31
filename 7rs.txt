@@ -1,0 +1,64 @@
+Cloud Migration Strategies:-
+
+Rehost:-
+1. This is basically lift and shift means just copy paste the on-premise infra and data into cloud as it is.
+2. eg:- If in on-premise you have a k8s cluster with 3 namespaces and 20pods and even in cloud you will have to create k8s cluster with same os, same namespaces and 
+same number of pods
+3. suitable for application that are platform independent
+When we say an application is platform independent, it means the application can run on different operating systems or hardware platforms without needing major changes.
+A platform-independent application can run on:
+Windows
+Linux
+macOS using the same codebase.
+4. cost optimization is  minimum because you did not use AWS best prcatices or other services
+
+Replatform:-
+1. You will migrate the applications with few changes.
+2. you will take advantage of the services that are provided by AWS that are feasible for ut application but are not present on a on-premise infrastructure.
+3. eg:- May be like creating k8s cluster in multiple regions for high availability scalability of your application.
+
+Repurchase:-
+eg:- 
+Refactor:-
+1. This strategy is best suitable for monolithic applications , for these applications we will have to rearchitecture the entire code base to divide into microservices.
+
+Relocate:-
+You have a k8s cluster on-premise, we will move it to eks on aws or openshift
+
+Retire:-
+Applications that nobosy is using.
+
+Retain:-
+1. There are some applications/microservices that can eiter be on-premise or they are not that important to migrate to cloud.
+2. eg:- very confidentail information like user details, and AWS will connect to these applications
+
+Cloud Migration process:-
+
+Step 1:- Preparation Stage
+1. You have joined a Migration team as a devops engineer, Your organization might have 200 microservice or one monolithic application, developers and devops should work
+together and transform the monolithic application into microservices.
+2. Check whether your organization is following a monolithic or microservices architecture.
+3. In the world of cloud it is suggested to create microservices application so it easy to deploy them as containers.
+
+step2:- planning
+1. You will have to check in which phases what microservices/applications will be deployed to cloud, so basically divide the 200 applications/microservices in multiple
+phases/waves.
+In phase1 you might send or migrate the applications that are non critical, more critical ones will be sent in last phase.
+2. Select which migration strategy you will use.
+
+NOTE:- Preparation and planning is a one time activity, optimize is also a one time activity
+
+step3:- Migration
+Migrate the application from on-premise to cloud as per their phases.
+
+step4:- Monitor
+1. Monitor the applications that are migrated for 1-2 months based on their criticality.
+2. asking the customers to share their feedback on these applications, create dashborads and monitor the performance for 1-2 months.
+
+step5:- improve/optimize
+1. Migrated to cloud what did i achieve, evaluation as to be done, cost optimization?
+2. Improve the efficiency maybe increase the cost optimization.
+
+NOTE:- 
+
+
