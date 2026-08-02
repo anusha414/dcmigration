@@ -8,7 +8,8 @@ non-critical 20 applications in first wave and the most critical ones in the las
 5. Application:- collection of servers that belong to a single application
 6. wave:- collection of applications that should be migrated in a single wave
 7. Replication template:- configuration details of the replication instances
-8:- launch template:- confoguration details for actual production servers/ec2
+8:- launch template:- configuration details for actual ec2 creation, it could be test/prod servers
+9:- A Conversion Instance is a temporary EC2 instance that AWS MGN launches during a Test or Cutover launch to prepare the replicated disks so they can boot correctly as an EC2 instance
 
 There are 2 ways you can do migration from on-premise to cloud:-
 1. Server based:- you have to install agent and do the migration
@@ -19,7 +20,8 @@ NOTE:- In our organization we have used agent based migration
 NOTE:- AWS replicates the disk as it is including the c and drive data sizes
 Replication and conversion instances must be created in public subnet
 Once the replication is completed it will create snapshot
-An EBS Snapshot is a point-in-time copy of an EBS volume stored in Amazon S3 (managed by AWS), these snapshots are created in ebs service
+An EBS Snapshot is a point-in-time copy of an EBS volume stored in Amazon S3 (managed by AWS), these snapshots are created in ebs service,
+whenever tthere is a change in on-prmise server data, it will be replicated and a snapsot will be created
 
 MGN Process:-
 
@@ -31,6 +33,14 @@ step1:- Create a MGN service in the region you want to migrate your application 
 output:- some 7 roles will be created when we create MGN service
 step2:- Install the replication agents on the on-premise servers which you want to migrate, you can make use of ipaddress of these servers via ssh to connect to them
 give the region and the mgn user/roles details so that authentication to AWS can happen without any issue and data will be replicated to that region
+step3:- once Replication istances are available, now launch test instances.
+output:- actual ec2 instances will be created and ebs volume is created from data stored in snapshot
+Replication is still continued but the chaanges will not reflected in test instances as they are created from a previous snapshot
+step4;- once testing is done, mark "ready for cutover" and delete the test instances
+output:- all the test instances will be deleted wait till then
+step5:- select "launch cutover instances", new ec2 instances will be created from the latest snapshot
+step6:- stop the on-premise, update the DNS and select "cutover complete", replication will be stopped and all the data related to it will be deleted
+
 
 What happens after agent installation?
 When you provide the AWS credentials and Region:
@@ -56,11 +66,21 @@ Compress/process replication traffic
 Write data to EBS volumes
 Maintain continuous synchronization
 
-step3:- Replication isnatnces are available, now create test instances
+What is a Conversion Instance?
+A Conversion Instance is a temporary EC2 instance that AWS MGN launches during a Test or Cutover launch to prepare the replicated disks so they can boot correctly as an EC2 instance.
+It performs OS-level conversions such as:
+Installing AWS drivers
+Configuring boot settings
+Updating networking configuration
+Installing AWS agents
+Making Windows/Linux compatible with AWS EC2
+
+After the conversion is complete, AWS launches the final EC2 instance.
 
 Migration Lifecycle:-
 
 1. not ready:- Migration is ongoing from on-premise to the cloud replication instances.
 2. Ready for testing;- Initial sync is completed and replication instances are now available
 3. Testing in Progress;- Testing instances are created and testing is in progress
+4. ready for cutover:- once the testing is done completely it will move to this state
 
