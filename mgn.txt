@@ -1,5 +1,66 @@
-AWS Application Migration service:-
+AWS Application Migration service:-(video:- https://www.youtube.com/watch?v=gVdfsFN6svw)
 
 1. It is a service to migrate on-premise applications to cloud.
 2. MGN tool is majorly used for lift and shift migration.
-3. It is not just for rehost, you can even do replatform.
+3. It is not just for rehost, you can even do re-platform.
+4. Migration is usually done in waves, which means you might have 200 applications running on the on-premise we dont migrate all the 200 at a time, we first migrate
+non-critical 20 applications in first wave and the most critical ones in the last wave.
+5. Application:- collection of servers that belong to a single application
+6. wave:- collection of applications that should be migrated in a single wave
+7. Replication template:- configuration details of the replication instances
+8:- launch template:- confoguration details for actual production servers/ec2
+
+There are 2 ways you can do migration from on-premise to cloud:-
+1. Server based:- you have to install agent and do the migration
+2. Mass migration:- use v-center
+
+NOTE:- In our organization we have used agent based migration
+
+NOTE:- AWS replicates the disk as it is including the c and drive data sizes
+Replication and conversion instances must be created in public subnet
+Once the replication is completed it will create snapshot
+An EBS Snapshot is a point-in-time copy of an EBS volume stored in Amazon S3 (managed by AWS), these snapshots are created in ebs service
+
+MGN Process:-
+
+1. TCP port 443 is used to authenticate to MGN service and TCP 1500 is used for data replication, and the data that is being replicated or migrated is completely encrypted.
+2. When you proceed with any data center migration you must collect the information such as server ipaddress, hostname of the applications running on that server, operating system and then what kind of application is running
+
+
+step1:- Create a MGN service in the region you want to migrate your application to
+output:- some 7 roles will be created when we create MGN service
+step2:- Install the replication agents on the on-premise servers which you want to migrate, you can make use of ipaddress of these servers via ssh to connect to them
+give the region and the mgn user/roles details so that authentication to AWS can happen without any issue and data will be replicated to that region
+
+What happens after agent installation?
+When you provide the AWS credentials and Region:
+The server gets registered with AWS MGN.
+AWS creates replication infrastructure in your AWS account (in the staging area).
+The agent starts reading disk blocks from the on-premises server.
+Those disk blocks are copied to AWS continuously.
+
+Is an EC2 instance created immediately?
+Usually No.
+By default, MGN creates:
+✅ Replication servers (temporary AWS-managed servers)
+✅ EBS volumes that receive replicated data
+❌ No production EC2 yet
+
+
+
+What is the Replication Server?
+The replication server is a small temporary EC2 instance that AWS automatically creates in the staging subnet.
+Its job is to:
+Receive disk blocks from the on-prem server
+Compress/process replication traffic
+Write data to EBS volumes
+Maintain continuous synchronization
+
+step3:- Replication isnatnces are available, now create test instances
+
+Migration Lifecycle:-
+
+1. not ready:- Migration is ongoing from on-premise to the cloud replication instances.
+2. Ready for testing;- Initial sync is completed and replication instances are now available
+3. Testing in Progress;- Testing instances are created and testing is in progress
+
