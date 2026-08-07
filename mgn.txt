@@ -10,7 +10,7 @@ Few terminology in MGN console:-
 1. source servers:- It basically shows the names of the source servers on the on-premise and their current status(replication ongoing, ready for test, ready for cutover)
 2. Application:- collection of servers that belong to a single application
 3. wave:- collection of applications that should be migrated in a single wave
-7. Replication template:- configuration details of the replication instances
+7. Replication template:- configuration details of the replication instances, these instances will not be visible in the ec2 console but they are managed by AWS.
 8:- launch template:- configuration details for actual ec2 creation, it could be test/prod servers
 9:- A Conversion Instance is a temporary EC2 instance that AWS MGN launches during a Test or Cutover launch to prepare the replicated disks so they can boot correctly as an EC2 instance
 
