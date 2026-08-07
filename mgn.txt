@@ -5,8 +5,11 @@ AWS Application Migration service:-(video:- https://www.youtube.com/watch?v=gVdf
 3. It is not just for rehost, you can even do re-platform.
 4. Migration is usually done in waves, which means you might have 200 applications running on the on-premise we dont migrate all the 200 at a time, we first migrate
 non-critical 20 applications in first wave and the most critical ones in the last wave.
-5. Application:- collection of servers that belong to a single application
-6. wave:- collection of applications that should be migrated in a single wave
+
+Few terminology in MGN console:-
+1. source servers:- It basically shows the names of the source servers on the on-premise and their current status(replication ongoing, ready for test, ready for cutover)
+2. Application:- collection of servers that belong to a single application
+3. wave:- collection of applications that should be migrated in a single wave
 7. Replication template:- configuration details of the replication instances
 8:- launch template:- configuration details for actual ec2 creation, it could be test/prod servers
 9:- A Conversion Instance is a temporary EC2 instance that AWS MGN launches during a Test or Cutover launch to prepare the replicated disks so they can boot correctly as an EC2 instance
