@@ -63,6 +63,7 @@ By default, MGN creates:
 
 What is the Replication Server?
 The replication server is a small temporary EC2 instance that AWS automatically creates in the staging subnet.
+It is created in public subnet
 Its job is to:
 Receive disk blocks from the on-prem server
 Compress/process replication traffic
