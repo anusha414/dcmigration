@@ -70,6 +70,16 @@ Compress/process replication traffic
 Write data to EBS volumes
 Maintain continuous synchronization
 
+How continuous replication works
+When you install the AWS Replication Agent on the source server:
+Initial Sync
+The agent copies all selected disks from the source server to AWS.
+This is usually the longest phase because the entire disk contents must be replicated.
+Continuous Replication
+After the initial sync completes, the agent monitors disk changes.
+Whenever blocks on the source disk change, only those changed blocks are sent to AWS.
+MGN continuously updates the replicated disks in the staging area.
+
 What is a Conversion Instance?
 A Conversion Instance is a temporary EC2 instance that AWS MGN launches during a Test or Cutover launch to prepare the replicated disks so they can boot correctly as an EC2 instance.
 It performs OS-level conversions such as:
